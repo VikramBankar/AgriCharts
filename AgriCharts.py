@@ -272,8 +272,8 @@ class AgriCharts:
                         self.driver.find_element_by_id("btnSubmit").click()
                         if self.is_element_present(how=By.ID, what="gridRecords"):
                                 #2nd Measure of protection: Check if the records exists:
-                                # extract only if they are no already extracted
-                                #TOdo: Coding Remaining.
+                                # extract only if they are not already extracted
+
                             title = str(self.driver.find_element_by_css_selector("span#lblTitle").text).split(" ")\
                                         .pop().replace('/', '-') + ".bin"
                             from os import listdir
