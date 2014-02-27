@@ -1,3 +1,11 @@
+@staticmethod\
+def parse_float(string_to_parse=""):
+    string_to_parse = string_to_parse.strip()
+    if (string_to_parse == "NR" or string_to_parse ==""):
+        return 0.0
+    else:
+        return float(string_to_parse)
+
 class Variety:
     name = ""
     minimum_prices = 0.0
@@ -10,9 +18,9 @@ class Variety:
 
     def new(self, variety, minimum_prices, maximum_prices, modal_prices, unit_of_price):
         self.name = variety
-        self.minimum_prices = float(minimum_prices)
-        self.maximum_prices = float(maximum_prices)
-        self.modal_prices = float(modal_prices)
+        self.minimum_prices = parse_float(minimum_prices)
+        self.maximum_prices = parse_float(maximum_prices)
+        self.modal_prices = parse_float(modal_prices)
         self.unit_of_price = unit_of_price
         return self
 
@@ -37,14 +45,8 @@ class Commodity:
         self.market = market
         self.type_of_commodity = type_of_commodity
         self.commodity_name = commodity_name
-
-        #since default float value is 0.0
-        arrivals = arrivals.strip()
-
-        if arrivals != "NR" and arrivals != "":
-            self.arrivals = float(arrivals)
-
-        self.unit_of_arrivals = unit_of_arrivals
+        self.arrivals = parse_float(arrivals)
+self.unit_of_arrivals = unit_of_arrivals
         self.variety = Variety().new(variety, minimum_prices, maximum_prices, modal_prices, unit_of_price)
         self.date = date
         return self
